@@ -1,0 +1,7 @@
+.card {
+  background-color: aqua;
+  @media (max-width: 450px) {
+    width: 350px;
+    display: block;
+  }
+}

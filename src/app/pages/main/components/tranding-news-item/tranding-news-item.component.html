@@ -1,9 +1,11 @@
-<!--TODO provide trackBy-->
-
 <ng-template #recursiveComment let-comments>
   <p-accordion>
-    <p-accordionTab *ngFor="let child of comments" [header]="child.by">
+    <p-accordionTab
+      *ngFor="let child of comments; trackBy: trackByComment"
+      [header]="child.by"
+    >
       <p [innerHTML]="child.text"></p>
+      <p>{{ item.time | date }}</p>
       <ng-container *ngIf="child.comments && child.comments.length">
         <ng-container
           *ngTemplateOutlet="
@@ -16,13 +18,10 @@
   </p-accordion>
 </ng-template>
 
-<p-card [header]="item.title" [subheader]="item.type">
-  <ng-template pTemplate="header">
-    <iframe [src]="sanitizedUrl"></iframe>
-  </ng-template>
-  <a href="{{ item.url }}" target="_blank">{{ item.url }}</a>
-
-  {{ item.by }}
+<p-card [header]="item.title" [subheader]="item.by" class="card">
+  <ng-template pTemplate="header"> </ng-template>
+  <a href="{{ item.url }}" target="_blank">Original article</a>
+  <p>{{ item.time | date }}</p>
 
   <ng-template pTemplate="footer">
     <ng-container

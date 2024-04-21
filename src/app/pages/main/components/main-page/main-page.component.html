@@ -1,41 +1,10 @@
-<p-sidebar [(visible)]="visibleSidebar" [baseZIndex]="10000">
-  <!--  <app-daily></app-daily>-->
-</p-sidebar>
-
 <div class="wrapper">
   <!--  TODO split to components-->
   <header>
     <p-toolbar>
-      <div class="p-toolbar-group-left" (click)="visibleSidebar = true">
-        <i class="pi pi-align-justify" style="font-size: 2rem"></i>
-        <img
-          src="https://pngimg.com/uploads/visa/visa_PNG30.png"
-          alt="logotype"
-          class="header_logo"
-        />
-      </div>
-      <span class="p-input-icon-left header__input">
-        <i class="pi pi-search"></i>
-        <input
-          type="text"
-          pInputText
-          placeholder="Search news"
-          (keydown.enter)="searchNews()"
-        />
-        <small class="p-error block header__error" *ngIf="cityError"
-          >Uncorrect city name</small
-        >
-        <p-button
-          icon="pi pi-search"
-          [loading]="loading"
-          (onClick)="searchNews()"
-        ></p-button>
-      </span>
-      <div class="p-toolbar-group-right">
-        <span class="header_switch">LIght</span>
-        <!--        <p-inputSwitch [(ngModel)]="darkModeActive" (click)="toAnotherTheme()" class="p-switch-accent"></p-inputSwitch>-->
-        <span class="header_switch">Dark</span>
-      </div>
+      <div class="p-toolbar-group-left"></div>
+      <span> Test task for Civitta </span>
+      <div class="p-toolbar-group-right"></div>
     </p-toolbar>
   </header>
   <main class="page">

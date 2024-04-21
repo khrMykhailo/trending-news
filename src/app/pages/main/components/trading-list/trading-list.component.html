@@ -1,8 +1,20 @@
-<div class="list">
-  <p-button icon="pi pi-angle-left" (click)="previousItem()"></p-button>
+<div class="list" *ngIf="currentNewsItem; else loading">
+  <p-button
+    icon="pi pi-angle-left"
+    (click)="previousItem()"
+    [disabled]="!currentItemOrder"
+  ></p-button>
   <app-tranding-news-item
     *ngIf="currentNewsItem"
     [item]="currentNewsItem"
   ></app-tranding-news-item>
-  <p-button icon="pi pi-angle-right" (click)="nextItem()"></p-button>
+  <p-button
+    icon="pi pi-angle-right"
+    (click)="nextItem()"
+    [disabled]="isLastItem"
+  ></p-button>
 </div>
+
+<ng-template #loading>
+  <i class="pi pi-spin pi-spinner" style="font-size: 10rem"></i>
+</ng-template>

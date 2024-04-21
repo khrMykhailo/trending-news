@@ -42,9 +42,14 @@ export class TradingListComponent
   extends DestroyableDirective
   implements OnInit
 {
-  public currentNewsItem: TradingNewsItemInterface;
+  public currentNewsItem: TradingNewsItemInterface | null = null;
+  public currentItemOrder = 0;
+
   private trandingNewsList: number[] = [];
-  private currentItemOrder = 0;
+
+  public get isLastItem(): boolean {
+    return this.trandingNewsList.length <= this.currentItemOrder;
+  }
 
   constructor(
     private trandingNewsApi: TrandingNewsApiService,
@@ -58,13 +63,15 @@ export class TradingListComponent
   }
 
   public nextItem() {
+    this.currentNewsItem = null;
     this.currentItemOrder++;
-    this.getItem(this.currentItemOrder);
+    this.getItem(this.trandingNewsList[this.currentItemOrder]);
   }
 
   public previousItem() {
+    this.currentNewsItem = null;
     this.currentItemOrder--;
-    this.getItem(this.currentItemOrder);
+    this.getItem(this.trandingNewsList[this.currentItemOrder]);
   }
   private getFullList(): void {
     this.trandingNewsApi
