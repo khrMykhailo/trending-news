@@ -5,6 +5,7 @@
 /tmp
 /out-tsc
 /bazel-out
+package-lock.json
 
 # Node
 /node_modules
@@ -18,6 +19,7 @@ yarn-error.log
 .c9/
 *.launch
 .settings/
+.nx
 *.sublime-workspace
 
 # Visual Studio Code

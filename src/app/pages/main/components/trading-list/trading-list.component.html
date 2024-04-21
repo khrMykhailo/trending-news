@@ -1,0 +1,8 @@
+<div class="list">
+  <p-button icon="pi pi-angle-left" (click)="previousItem()"></p-button>
+  <app-tranding-news-item
+    *ngIf="currentNewsItem"
+    [item]="currentNewsItem"
+  ></app-tranding-news-item>
+  <p-button icon="pi pi-angle-right" (click)="nextItem()"></p-button>
+</div>
