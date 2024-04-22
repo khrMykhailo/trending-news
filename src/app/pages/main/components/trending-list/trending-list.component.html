@@ -1,0 +1,28 @@
+<div class="list" *ngIf="itemsStore.currentItem; else loading">
+  <ng-template #loadingPrevious>
+    <p-button icon="pi pi-spin pi-spinner" [disabled]="true"></p-button>
+  </ng-template>
+  <p-button
+    *ngIf="itemsStore.previousItem || !currentItemOrder; else loadingPrevious"
+    icon="pi pi-angle-left"
+    (click)="previousItem()"
+    [disabled]="!currentItemOrder"
+  ></p-button>
+  <app-trending-news-item
+    *ngIf="itemsStore.currentItem"
+    [item]="itemsStore.currentItem"
+  ></app-trending-news-item>
+  <p-button
+    *ngIf="itemsStore.nextItem || isLastItem; else loadingNext"
+    icon="pi pi-angle-right"
+    (click)="nextItem()"
+    [disabled]="isLastItem"
+  ></p-button>
+  <ng-template #loadingNext>
+    <p-button icon="pi pi-spin pi-spinner" [disabled]="true"></p-button>
+  </ng-template>
+</div>
+
+<ng-template #loading>
+  <i class="pi pi-spin pi-spinner" style="font-size: 10rem"></i>
+</ng-template>

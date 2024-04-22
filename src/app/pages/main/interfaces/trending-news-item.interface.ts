@@ -26,3 +26,9 @@ export interface TrendingNewsItemDTO extends TrendingNewsBase {
 export interface TrendingNewsItemInterface extends TrendingNewsBase {
   comments: Comment[];
 }
+
+export interface ItemsSimpleStore {
+  previousItem: TrendingNewsItemInterface | null;
+  currentItem: TrendingNewsItemInterface | null;
+  nextItem: TrendingNewsItemInterface | null;
+}
