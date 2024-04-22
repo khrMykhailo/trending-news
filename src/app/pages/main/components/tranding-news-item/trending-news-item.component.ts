@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
-import { Comment } from '../../interfaces/trading-news-item.interface';
+import { Comment } from '../../interfaces/trending-news-item.interface';
 import { AccordionModule } from 'primeng/accordion';
 import {
   DatePipe,
@@ -24,11 +24,11 @@ import {
     NgIf,
     DatePipe,
   ],
-  templateUrl: './tranding-news-item.component.html',
-  styleUrl: './tranding-news-item.component.scss',
+  templateUrl: './trending-news-item.component.html',
+  styleUrl: './trending-news-item.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TrandingNewsItemComponent {
+export class TrendingNewsItemComponent {
   @Input() item!: any;
   trackByComment(index: number, comment: Comment) {
     return comment.id;

@@ -5,7 +5,7 @@ interface EntityBase {
   type: string;
 }
 
-export interface TradingNewsBase extends EntityBase {
+export interface TrendingNewsBase extends EntityBase {
   descendants: number;
   score: number;
   title: string;
@@ -19,10 +19,10 @@ export interface Comment extends EntityBase {
   comments?: Comment[];
 }
 
-export interface TradingNewsItemDTO extends TradingNewsBase {
+export interface TrendingNewsItemDTO extends TrendingNewsBase {
   kids?: number[];
 }
 
-export interface TradingNewsItemInterface extends TradingNewsBase {
+export interface TrendingNewsItemInterface extends TrendingNewsBase {
   comments: Comment[];
 }

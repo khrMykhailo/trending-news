@@ -4,9 +4,13 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
-import { TrandingNewsApiService } from '../../services/tranding-news-api.service';
+import { TrendingNewsApiService } from '../../services/trending-news-api.service';
 import { DestroyableDirective } from '../../../shared/directives/destroyable.directive';
-import { TradingNewsItemInterface } from '../../interfaces/trading-news-item.interface';
+import {
+  Comment,
+  TrendingNewsItemDTO,
+  TrendingNewsItemInterface,
+} from '../../interfaces/trending-news-item.interface';
 import {
   catchError,
   concatMap,
@@ -20,7 +24,7 @@ import {
 } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 import { AsyncPipe, NgIf } from '@angular/common';
-import { TrandingNewsItemComponent } from '../tranding-news-item/tranding-news-item.component';
+import { TrendingNewsItemComponent } from '../tranding-news-item/trending-news-item.component';
 import { ButtonModule } from 'primeng/button';
 
 @Component({
@@ -28,21 +32,21 @@ import { ButtonModule } from 'primeng/button';
   standalone: true,
   imports: [
     HttpClientModule,
-    TrandingNewsItemComponent,
+    TrendingNewsItemComponent,
     AsyncPipe,
     NgIf,
     ButtonModule,
   ],
-  providers: [TrandingNewsApiService],
-  templateUrl: './trading-list.component.html',
-  styleUrl: './trading-list.component.scss',
+  providers: [TrendingNewsApiService],
+  templateUrl: './trending-list.component.html',
+  styleUrl: './trending-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TradingListComponent
+export class TrendingListComponent
   extends DestroyableDirective
   implements OnInit
 {
-  public currentNewsItem: TradingNewsItemInterface | null = null;
+  public currentNewsItem: TrendingNewsItemInterface | null = null;
   public currentItemOrder = 0;
 
   private trandingNewsList: number[] = [];
@@ -52,7 +56,7 @@ export class TradingListComponent
   }
 
   constructor(
-    private trandingNewsApi: TrandingNewsApiService,
+    private trandingNewsApi: TrendingNewsApiService,
     private cdr: ChangeDetectorRef,
   ) {
     super();
@@ -107,7 +111,7 @@ export class TradingListComponent
       });
   }
 
-  private expandComments(item: any): Observable<any> {
+  private expandComments(item: TrendingNewsItemDTO | Comment): Observable<any> {
     if (!item.kids || item.kids.length === 0) {
       return of(item);
     }
@@ -128,7 +132,7 @@ export class TradingListComponent
     );
   }
 
-  private setFullItem(fullItem: TradingNewsItemInterface): void {
+  private setFullItem(fullItem: TrendingNewsItemInterface): void {
     this.currentNewsItem = fullItem;
     this.cdr.markForCheck();
   }
